@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Income 2025</title>
+    <style>
+        body { background-color: #1e1e1e; color: #fff; font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .card { background: #2b2b2b; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); margin: 20px auto; max-width: 400px; }
+        .button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .button:hover { background: #0056b3; }
+        .progress { background: #444; border-radius: 5px; overflow: hidden; }
+        .progress-bar { background: #28a745; height: 20px; width: 0%; transition: width 0.5s; }
+    </style>
+</head>
+<body>
+    <div class="card"> 
+        <h2>Dear User, Welcome To Free Income 2025</h2>
+        <p>Watched Ads: <span id="watched-ads">0</span></p>
+        <p>Earn Taka: <span id="earn-taka">0</span></p>
+        <div class="progress">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <br>
+        <button class="button" onclick="watchAd(1)">Watch Ad 1</button>
+        <button class="button" onclick="watchAd(2)">Watch Ad 2</button>
+        <button class="button" onclick="watchAd(3)">Watch Ad 3</button>
+        <button class="button" onclick="requestWithdrawal()">Withdraw</button>
+    </div>
+
+    <script>
+        let watchedAds = localStorage.getItem('watchedAds') || 0;
+        let earnTaka = localStorage.getItem('earnTaka') || 0;
+
+        document.getElementById('watched-ads').innerText = watchedAds;
+        document.getElementById('earn-taka').innerText = earnTaka;
+        document.getElementById('progress-bar').style.width = (watchedAds / 20 * 100) + '%';
+
+        function watchAd(adNumber) {
+            watchedAds++;
+            earnTaka = watchedAds;
+
+            localStorage.setItem('watchedAds', watchedAds);
+            localStorage.setItem('earnTaka', earnTaka);
+
+            document.getElementById('watched-ads').innerText = watchedAds;
+            document.getElementById('earn-taka').innerText = earnTaka;
+            document.getElementById('progress-bar').style.width = (watchedAds / 20 * 100) + '%';
+
+            if (watchedAds >= 20) {
+                alert('You have watched all ads!');
+            }
+        }
+
+        function requestWithdrawal() {
+            if (earnTaka >= 20) {
+                alert('Withdrawal request sent to admin via Telegram!');
+            } else {
+                alert('Minimum withdrawal is 20 Taka');
+            }
+        }
+    </script>
+<script src='//whephiwums.com/sdk.js' data-zone='9014624' data-sdk='show_9014624'></script>
+    <script>
+        // In-App Interstitial 
+        show_9014624({ 
+            type: 'inApp', 
+            inAppSettings: { 
+                frequency: 2, 
+                capping: 0.1, 
+                interval: 30, 
+                timeout: 5, 
+                everyPage: false 
+            } 
+        });
+
+        // Rewarded Popup
+        function watchAd(adNumber) {
+            show_9014624('pop').then(() => {
+                watchedAds++;
+                earnTaka = watchedAds;
+                localStorage.setItem('watchedAds', watchedAds);
+                localStorage.setItem('earnTaka', earnTaka);
+                document.getElementById('watched-ads').innerText = watchedAds;
+                document.getElementById('earn-taka').innerText = earnTaka;
+                document.getElementById('progress-bar').style.width = (watchedAds / 20 * 100) + '%';
+                if (watchedAds >= 20) {
+                    alert('You have watched all ads!');
+                }
+            }).catch(e => {
+                alert('Error showing ad.');
+            });
+        }
+
+        // Rewarded Interstitial
+        show_9014624().then(() => {
+            alert('You have seen an ad!');
+        });
+    </script>
+</body>
+</html>
